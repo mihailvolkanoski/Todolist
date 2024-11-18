@@ -1,0 +1,278 @@
+* 
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    
+  background: linear-gradient(145deg, grey, black);
+  color: yellow; 
+  font-family: 'Poppins', cursive sans-serif ;
+  min-height: 100vh;
+
+}
+
+h1 {
+    margin-top: -5%;
+    font-size: 150%;
+}
+header 
+{ 
+    font-size: 1.9rem;
+    
+}
+
+header,
+form 
+{ 
+    min-height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form input, form button 
+{ 
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    border: solid  #d88771;
+    outline: #d88771;
+    background: white;
+
+}
+
+form button 
+{ 
+    color: #d88771;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+form button:hover 
+{ 
+    background: #d88771;
+    color: white;
+    
+}
+
+.todo-container 
+{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.todo-list 
+{ 
+    width: 30%;
+    list-style-type: circle;
+}
+
+.todo 
+{ 
+    margin: 1rem;
+    background: white;
+    color: black;
+    font-size: 1rem;
+    display: flex;
+    border: solid #d88771; 
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.todo li 
+{ 
+    flex: 1; 
+}
+
+.trash-btn, 
+.complete-btn 
+{ 
+    border: none;
+    padding: 0.9rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.complete-btn
+{
+  
+    color: #d88771;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+.complete-btn:hover
+{ 
+    background: #d88771;
+    color: green;
+}
+
+.trash-btn
+{ 
+    color: #d88771;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+}
+
+.trash-btn:hover
+{ 
+    background: #d88771;
+    color: red;
+}
+
+.todo-item {
+    border: 0px solid #d88771;
+    border-radius: 15px; 
+    padding: 8px; 
+    margin-bottom: 9px; 
+}
+
+
+.fa-trash-can, .fa-circle-check
+{ 
+    pointer-events: none;
+} 
+
+.completed
+{
+    opacity: 0.5;
+    text-decoration: line-through black;
+    text-decoration-thickness: 0.1rem; 
+    
+}
+
+.fall 
+{
+    transform: translateY(8rem) translateX(7rem);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease; 
+  }
+  
+select 
+{ 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    border:  solid;
+    
+}
+.select 
+{ 
+    margin: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+select 
+{ 
+    color: #ff6f47;
+    width: 20rem;
+    cursor: pointer;
+    padding: 1rem;
+}
+
+.select::after
+{ 
+    content: "\25BC";
+    position: absolute;
+    background: #ff6f47;
+    color: white    ;
+    top: 0;
+    right: 0;
+    padding: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    
+}
+
+.select:hover::after
+{ 
+    opacity: 0.4;
+    background: white;
+    color: #ff6f47;
+}
+
+
+.TaskForm { 
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.optionCSS { 
+    font-size: 180%;
+    font-family: 'Popins', cursive, serif;
+}
+
+.todo span { 
+    display: flex;
+    max-width:max-content;
+    height: 100%;
+   justify-content: flex-end;
+}
+  
+.SortPriority { 
+    font-size: 180%;
+    font-family: 'Popins', cursive, serif;
+}
+
+.nav-list { 
+    list-style-type: none;
+    overflow:hidden;
+    font-size: xx-large;
+    display:flex;
+    justify-content:center;
+    padding: 0;
+    margin: 0;
+  
+}
+
+
+.nav-item a, .nav-item2 a { 
+    display: inline-block   ;
+    padding: 5px 10px; 
+    text-decoration: none;
+    color: #fff; 
+    background-color: transparent;
+   
+}
+
+/*.nav-item a { 
+    margin-left: -30rem;
+}*/
+
+.nav-item2 a { 
+ margin-left: 107rem;
+}
+
+
+.nav-item a:hover {
+    background-color: gray;
+    transition: all 0.3s ease;
+  }
+
+.nav-item2 a:hover { 
+    background-color: gray;
+    transition: all 0.3s ease;
+    
+    
+}
+  
+a { 
+    font-size:20px;
+    padding: 428px;
+    }

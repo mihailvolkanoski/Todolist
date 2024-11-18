@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="todolist.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <title>Todo List</title>
+</head>
+<body>
+    
+    <ul class="nav-list">  
+        <li class="nav-item"> <a href="#Home"> Home </a></li> 
+        <li class="nav-item2"> <a href="login&signup.html">
+            <i class="fa-solid fa-user-plus"></i> Log in / Sign up</a></li>
+    </ul>
+
+    <header> 
+        <h1>Mihail's To-do List</h1>
+    </header>
+
+    <!-- Todo Form -->
+    <form id="TaskForm" class="TaskForm">   
+        <input type="text" class="todo-input" placeholder="Add a new todo" required />
+        <button class="todo-button" type="submit">
+            <i class="fas fa-plus-square"></i>
+        </button>
+
+        <div class="select">
+            <select id="change" name="todos" class="filter-todo">
+                <option value="all">All</option>
+                <option value="Completed">Completed</option>
+                <option value="Uncompleted">Uncompleted</option>
+            </select>
+        </div>
+
+        <div> 
+            <select id="sortOrder" onchange="sortTodos()">
+                <option value="SortByPriority" class="SortPriority">Sort by Priority: </option>
+                <option value="asc">Ascending</option>
+                <option value="desc">Descending</option>
+                <option value="Normal">Normal</option>
+            </select>
+        </div>
+
+        <select id="priority" class="TaskSelect" required>
+            <option value="" class="optionCSS">Select Priority</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+    </form>
+
+    <div class="todo-container">
+        <ul class="todo-list" id="todoLista"></ul>  
+    </div>
+
+    <div id="root"></div>
+    <script src="https://unpkg.com/react/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js" crossorigin></script>
+    <script type="module" src="app.js" defer></script>
+    <script src="todolist.js" defer></script>
+    <script src="react.js" defer></script>
+    
+</body>
+</html>
