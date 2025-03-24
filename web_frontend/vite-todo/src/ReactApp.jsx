@@ -1,10 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SuperTokens, { SuperTokensWrapper } from "supertokens-auth-react";
-import { ThirdPartyEmailPassword } from 'supertokens-auth-react/recipe/thirdpartyemailpassword';
-import TodoList from './todolist';
-import './todolist.css';
+//import SuperTokens, { SuperTokensWrapper } from "supertokens-auth-react";
+//import { ThirdPartyEmailPassword } from 'supertokens-auth-react/recipe/thirdpartyemailpassword';
+import TodoList from './todolist.jsx';
 
 // Initialize SuperTokens
 SuperTokens.init({
@@ -20,7 +19,7 @@ SuperTokens.init({
     ]
 });
 
-const App = () => {
+const ReactApp = () => {
     return (
         <SuperTokensWrapper>
             <Router>
@@ -28,6 +27,9 @@ const App = () => {
                     <Route path="/auth" element={<ThirdPartyEmailPassword />} />
                     <Route path="/todos" element={<TodoList />} />
                 </Routes>
+                <div> 
+                    <TodoList />
+                </div>
             </Router>
         </SuperTokensWrapper>
     );
@@ -36,4 +38,4 @@ const App = () => {
 const root = createRoot(document.getElementById('root'));
 root.render(<App />);
 
-export default App;
+export default ReactApp;    

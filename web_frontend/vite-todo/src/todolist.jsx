@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { createTodo, getTodos } from './api.js';
+import './todolist.css';
 
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
@@ -17,13 +19,19 @@ const TodoApp = () => {
     setFilterOption(savedFilter);
   }, []);
 
-  const handleAddTodo = (event) => {
+  useEffect(() => {
+    console.log("TodoApp component has mounted!");
+  }, []);
+  
+  const handleAddTodo = async (event) => {
     event.preventDefault();
-    if (!newTodo.trim()) return; 
+    console.log("ne se cita");
+
+    /*if (!newTodo.trim()) return; 
     if (!priority) {
       alert('Please select a priority for your todo.');
       return;
-    }
+    }*/
 
     const newTodoItem = {
       id: generateRandomID(),
@@ -31,18 +39,39 @@ const TodoApp = () => {
       priority: parseInt(priority, 10),
       completed: false
     };
+    try {
+      const createdTodo = await createTodo(newTodoItem);
+      console.log("Created todo:", createdTodo);
+   
+  
+      const updatedTodos = [...todos, createdTodo];
+      const updatedOriginalTodos = [...originalTodos, createdTodo];
+  
+      setTodos(updatedTodos);
+      setOriginalTodos(updatedOriginalTodos);
+      updateLocalStorage(updatedTodos, updatedOriginalTodos);
+      setNewTodo('');
+      setPriority('');
 
-    const updatedTodos = [...todos, newTodoItem];
-    const updatedOriginalTodos = [...originalTodos, newTodoItem];
-
-    setTodos(updatedTodos);
-    setOriginalTodos(updatedOriginalTodos);
-    updateLocalStorage(updatedTodos, updatedOriginalTodos);
-
-    setNewTodo('');
-    setPriority(''); 
+    } 
+    catch (error) {
+      alert('Failed to create todo.');
+    }  
   };
-
+  useEffect(() => {
+    const fetchTodos = async () => {
+      try {
+        const fetchedTodos = await getTodos(); 
+        setTodos(fetchedTodos);
+        setOriginalTodos(fetchedTodos);
+      } catch (error) {
+        console.error('Error fetching todos:', error);
+      }
+    };
+  
+    fetchTodos();
+  }, []); 
+  
   const handleFilterChange = (e) => {
     const newFilter = e.target.value;
     setFilterOption(newFilter);
@@ -72,9 +101,8 @@ const TodoApp = () => {
     const updatedTodos = todos.map (todo => 
       todo.id === id ? {...todo, completed: !todo.completed} : todo 
     );
-    const updatedOriginalTodos = updatedTodos;
     setTodos(updatedTodos);
-    updateLocalStorage(updatedTodos,updatedOriginalTodos);
+    updateLocalStorage(updatedTodos,originalTodos);
   }
 
   const handleDeleteTodo = (id) => { 
@@ -92,24 +120,27 @@ const TodoApp = () => {
     <div>
       <h1>Todo List</h1>
       <form onSubmit={handleAddTodo}>
-        <input
-          type="text"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Add a new todo"
-        />
-        <select
-          value={priority}
-          onChange={(e) => setPriority(e.target.value)}
-          required
-        >
-          <option value="">Select Priority</option>
-          {[...Array(10).keys()].map(i => (
-            <option key={i + 1} value={i + 1}>{i + 1}</option>
-          ))}
-        </select>
-        <button type="submit">Add Todo</button>
-      </form>
+      <button onClick={handleAddTodo}>Test Button</button>
+
+  <input
+    type="text"
+    value={newTodo}
+    onChange={(e) => setNewTodo(e.target.value)}
+    placeholder="Add a new todo"
+  />
+  <select
+    value={priority}
+    onChange={(e) => setPriority(e.target.value)}
+    required
+  >
+    <option value="">Select Priority</option>
+    {[...Array(10).keys()].map(i => (
+      <option key={i + 1} value={i + 1}>{i + 1}</option>
+    ))}
+  </select>
+  <button type="submit">Add Todo</button>
+</form>
+
 
       <select value={filterOption} onChange={handleFilterChange}>
         <option value="all">All</option>
